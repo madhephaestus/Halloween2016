@@ -23,14 +23,8 @@ upperHeadDiam.setMM(50)
 
 def headParts  = (ArrayList<CSG> )ScriptingEngine.gitScriptRun("https://gist.github.com/e67b5f75f23c134af5d5054106e3ec40.git", "AnimatronicHead.groovy" ,  null )
 println "Loading head"
-CSG scannedHead =  ScriptingEngine.gitScriptRun("https://github.com/madhephaestus/Halloween2016.git", "KevinHarringtonScan.stl" ,  null )
-		.movey(-400)
-		.movex(-60)
-		.rotx(-23)
-		.rotz(185)
-		.movey(15)
-		.movez(-65)
-		.movex(75)
+CSG scannedHead =  ScriptingEngine.gitScriptRun("https://github.com/madhephaestus/Halloween2016.git", "KevinHarringtonScan_moved.stl" ,  null )
+
 println "Making cutout"
 CSG cutout = scannedHead
 			.hull()
