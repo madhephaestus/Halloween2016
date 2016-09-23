@@ -26,8 +26,9 @@ println "Loading head"
 CSG scannedHead =  ScriptingEngine.gitScriptRun("https://github.com/madhephaestus/Halloween2016.git", "KevinHarringtonScan.stl" ,  null )
 		.movey(-400)
 		.movex(-60)
-		.rotx(-25)
+		.rotx(-23)
 		.rotz(185)
+		.movey(15)
 		.movez(-65)
 		.movex(75)
 println "Making cutout"
@@ -36,9 +37,14 @@ CSG cutout = scannedHead
 			.scale(1.05)
 BowlerStudioController.addCsg(cutout)		
 println "Performing cutout"
-def retParts  = headParts.collect{
-	it.difference(cutout)
+
+for(int i=3;i<6;i++){
+	headParts.set(	i,
+				headParts.get(i)
+					.difference(cutout)
+				)
+
 }
 
-retParts.add(scannedHead)
-return retParts
+headParts.add(scannedHead)
+return headParts
