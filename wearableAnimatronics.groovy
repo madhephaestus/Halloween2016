@@ -34,7 +34,7 @@ CSG scannedHead =  ScriptingEngine.gitScriptRun("https://github.com/madhephaestu
 println "Making cutout"
 CSG cutout = scannedHead
 			.hull()
-			.scale(1.05)
+			.scale(1.02)
 BowlerStudioController.addCsg(cutout)		
 println "Performing cutout"
 
