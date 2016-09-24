@@ -16,17 +16,17 @@ StringParameter boltSizeParam 			= new StringParameter("Bolt Size","M3",Vitamins
 servoSizeParam.setStrValue("hv6214mg")
 headDiameter.setMM(400)
 snoutLen.setMM(300)
-eyeCenter.setMM(250)
+eyeCenter.setMM(230)
 leyeDiam.setMM(120)
 reyeDiam.setMM(120)
 jawHeight.setMM(85)
 upperHeadDiam.setMM(50)
 eyemechRadius.setMM(30)
 
-def headParts  = (ArrayList<CSG> )ScriptingEngine.gitScriptRun("https://gist.github.com/e67b5f75f23c134af5d5054106e3ec40.git", "AnimatronicHead.groovy" ,  null )
+def headParts  = (ArrayList<CSG> )ScriptingEngine.gitScriptRun("https://gist.github.com/e67b5f75f23c134af5d5054106e3ec40.git", "AnimatronicHead.groovy" ,  [false] )
 println "Loading head"
 CSG scannedHead =  ScriptingEngine.gitScriptRun("https://github.com/madhephaestus/Halloween2016.git", "KevinHarringtonScan_moved.stl" ,  null )
-
+				.movex(-40)
 println "Making cutout"
 CSG cutout = scannedHead
 			.hull()
@@ -35,12 +35,21 @@ BowlerStudioController.addCsg(cutout)
 println "Performing cutout"
 
 for(int i=3;i<6;i++){
-	headParts.set(	i,
-				headParts.get(i)
+	def mfg = headParts.get(i).getManufactuing()
+	CSG newPart = headParts.get(i)
 					.difference(cutout)
-				)
+	newPart.setManufactuing(mfg)
+	headParts.set(	i,newPart)
 
 }
+println "Creating cutsheet"
+ArrayList<CSG> sheetParts = new ArrayList<>()
+for(int i=0;i<headParts.size()-6;i++){
+	sheetParts.add(headParts.get(i))
+}
 
+def allParts = 	sheetParts.collect { it.prepForManufacturing() } 
+CSG cutSheet = allParts.get(0).union(allParts)
+headParts.add(cutSheet )
 headParts.add(scannedHead)
 return headParts
