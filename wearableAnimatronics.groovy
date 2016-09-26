@@ -27,6 +27,7 @@ def headParts  = (ArrayList<CSG> )ScriptingEngine.gitScriptRun("https://gist.git
 println "Loading head"
 CSG scannedHead =  ScriptingEngine.gitScriptRun("https://github.com/madhephaestus/Halloween2016.git", "KevinHarringtonScan_moved.stl" ,  null )
 				.movex(-40)
+				
 println "Making cutout"
 CSG cutout = scannedHead
 			.hull()
