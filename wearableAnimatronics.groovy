@@ -14,20 +14,21 @@ StringParameter servoSizeParam 			= new StringParameter("hobbyServo Default","to
 StringParameter boltSizeParam 			= new StringParameter("Bolt Size","M3",Vitamins.listVitaminSizes("capScrew"))
 
 servoSizeParam.setStrValue("hv6214mg")
-headDiameter.setMM(400)
-snoutLen.setMM(300)
-eyeCenter.setMM(230)
-leyeDiam.setMM(120)
-reyeDiam.setMM(120)
+headDiameter.setMM(300)
+snoutLen.setMM(250)
+eyeCenter.setMM(200)
+leyeDiam.setMM(100)
+reyeDiam.setMM(100)
 jawHeight.setMM(85)
-upperHeadDiam.setMM(50)
-eyemechRadius.setMM(30)
+upperHeadDiam.setMM(40)
+eyemechRadius.setMM(15)
+thickness.setMM(6)
 
 def headParts  = (ArrayList<CSG> )ScriptingEngine.gitScriptRun("https://gist.github.com/e67b5f75f23c134af5d5054106e3ec40.git", "AnimatronicHead.groovy" ,  [false] )
 println "Loading head"
 CSG scannedHead =  ScriptingEngine.gitScriptRun("https://github.com/madhephaestus/Halloween2016.git", "KevinHarringtonScan_moved.stl" ,  null )
 				.movex(-40)
-				
+				.movez(-20)
 println "Making cutout"
 CSG cutout = scannedHead
 			.hull()
