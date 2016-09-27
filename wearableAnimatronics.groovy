@@ -46,7 +46,7 @@ for(int i=3;i<6;i++){
 }
 println "Creating cutsheet"
 ArrayList<CSG> sheetParts = new ArrayList<>()
-for(int i=0;i<headParts.size()-6;i++){
+for(int i=0;i<headParts.size()-10;i++){
 	sheetParts.add(headParts.get(i))
 }
 
