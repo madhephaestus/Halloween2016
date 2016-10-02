@@ -12,8 +12,10 @@ LengthParameter eyemechRadius		= new LengthParameter("Eye Mech Linkage",10,[20,5
 LengthParameter eyeCenter 		= new LengthParameter("Eye Center Distance",headDiameter.getMM()/2,[headDiameter.getMM(),headDiameter.getMM()/2])
 StringParameter servoSizeParam 			= new StringParameter("hobbyServo Default","towerProMG91",Vitamins.listVitaminSizes("hobbyServo"))
 StringParameter boltSizeParam 			= new StringParameter("Bolt Size","M3",Vitamins.listVitaminSizes("capScrew"))
+LengthParameter boltLength		= new LengthParameter("Bolt Length",10,[18,10])
 
 servoSizeParam.setStrValue("hv6214mg")
+boltSizeParam.setStrValue("8#32")
 headDiameter.setMM(300)
 snoutLen.setMM(250)
 eyeCenter.setMM(200)
@@ -23,6 +25,7 @@ jawHeight.setMM(85)
 upperHeadDiam.setMM(40)
 eyemechRadius.setMM(15)
 thickness.setMM(6)
+boltLength.setMM(27)
 
 def headParts  = (ArrayList<CSG> )ScriptingEngine.gitScriptRun("https://gist.github.com/e67b5f75f23c134af5d5054106e3ec40.git", "AnimatronicHead.groovy" ,  [false] )
 println "Loading head"
