@@ -11,10 +11,12 @@ LengthParameter reyeDiam 		= new LengthParameter("Right Eye Diameter",35,[headDi
 LengthParameter eyemechRadius		= new LengthParameter("Eye Mech Linkage",10,[20,5])
 LengthParameter eyeCenter 		= new LengthParameter("Eye Center Distance",headDiameter.getMM()/2,[headDiameter.getMM(),headDiameter.getMM()/2])
 StringParameter servoSizeParam 			= new StringParameter("hobbyServo Default","towerProMG91",Vitamins.listVitaminSizes("hobbyServo"))
+StringParameter hornSizeParam 			= new StringParameter("hobbyServoHorn Default","standardMicro1",Vitamins.listVitaminSizes("hobbyServoHorn"))
 StringParameter boltSizeParam 			= new StringParameter("Bolt Size","M3",Vitamins.listVitaminSizes("capScrew"))
 LengthParameter boltLength		= new LengthParameter("Bolt Length",10,[18,10])
 
 servoSizeParam.setStrValue("hv6214mg")
+hornSizeParam.setStrValue("hv6214mg_1")
 boltSizeParam.setStrValue("8#32")
 headDiameter.setMM(300)
 snoutLen.setMM(250)
