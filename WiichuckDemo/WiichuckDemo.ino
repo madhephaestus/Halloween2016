@@ -36,7 +36,7 @@ void loop()
 char i=50;
 
    
-    if( loop_cnt > 100 ) { // every 100 msecs get new data
+    if( loop_cnt > 20 ) { // every 100 msecs get new data
         loop_cnt = 0;
 
         nunchuck_get_data();
@@ -51,11 +51,11 @@ char i=50;
         
                   eyetilt.write(joyx);
           eyepan.write(joyy);    
-        Serial.print("accx: "); Serial.print((byte)accx,DEC);
-        Serial.print("\taccy: "); Serial.print((byte)accy,DEC);
-        Serial.print("\taccy: "); Serial.print((byte)accz,DEC);
-        Serial.print("\tzbut: "); Serial.print((byte)zbut,DEC);
-        Serial.print("\tcbut: "); Serial.println((byte)cbut,DEC);
+        //Serial.print("accx: "); Serial.print((byte)accx,DEC);
+        //Serial.print("\taccy: "); Serial.print((byte)accy,DEC);
+        //Serial.print("\taccy: "); Serial.print((byte)accz,DEC);
+        //Serial.print("\tzbut: "); Serial.print((byte)zbut,DEC);
+        //Serial.print("\tcbut: "); Serial.println((byte)cbut,DEC);
     }
     loop_cnt++;
     delay(1);
