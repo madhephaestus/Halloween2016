@@ -36,7 +36,7 @@ void loop()
 char i=50;
 
    
-    if( loop_cnt > 20 ) { // every 100 msecs get new data
+    if( loop_cnt > 20 ) { // every 20 msecs get new data
         loop_cnt = 0;
 
         nunchuck_get_data();
