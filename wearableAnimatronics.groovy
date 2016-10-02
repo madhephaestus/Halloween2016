@@ -25,7 +25,7 @@ jawHeight.setMM(85)
 upperHeadDiam.setMM(40)
 eyemechRadius.setMM(15)
 thickness.setMM(6)
-boltLength.setMM(27)
+boltLength.setMM(20)
 
 def headParts  = (ArrayList<CSG> )ScriptingEngine.gitScriptRun("https://gist.github.com/e67b5f75f23c134af5d5054106e3ec40.git", "AnimatronicHead.groovy" ,  [false] )
 println "Loading head"
