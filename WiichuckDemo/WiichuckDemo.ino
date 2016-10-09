@@ -25,9 +25,9 @@ void setup()
 
     nunchuck_setpowerpins();
     nunchuck_init(); // send the initilization handshake
-    eyepan.attach(D3);
-    eyetilt.attach(D6);
-    jaw.attach(D5);
+    eyepan.attach(D6);
+    eyetilt.attach(D5);
+    jaw.attach(D3);
     Serial.print("WiiChuckDemo ready\n");
 }
 // 130 50
@@ -37,7 +37,6 @@ void loop()
    
     if( loop_cnt > 20 ) { // every 20 msecs get new data
         loop_cnt = 0;
-
         nunchuck_get_data();
 
         accx  = nunchuck_accelx(); // ranges from approx 70 - 182
@@ -50,7 +49,7 @@ void loop()
         
         eyetilt.write(joyx);
         eyepan.write(joyy);  
-        jaw.write(zbut?255:0); 
+        jaw.write(zbut?160:20); 
         //Serial.print("accx: "); Serial.print((byte)accx,DEC);
         //Serial.print("\taccy: "); Serial.print((byte)accy,DEC);
         //Serial.print("\taccy: "); Serial.print((byte)accz,DEC);
