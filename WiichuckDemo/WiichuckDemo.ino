@@ -46,7 +46,16 @@ void loop()
         cbut = nunchuck_cbutton(); 
         joyx = nunchuck_joyx();
         joyy = nunchuck_joyy();
-        
+        if(joyx>160)
+          joyx=160;
+        if(joyy>160)
+          joyy=160;
+          
+        if(joyx<25)
+          joyx=24;
+        if(joyy<25)
+          joyy=24;  
+          
         eyetilt.write(joyx);
         eyepan.write(joyy);  
         jaw.write(zbut?160:20); 
