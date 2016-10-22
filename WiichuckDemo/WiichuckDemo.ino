@@ -12,7 +12,7 @@
 
 int loop_cnt=0;
 
-byte accx,accy,accz,zbut,cbut,joyx,joyy;
+int accx,accy,accz,zbut,cbut,joyx,joyy;
 int ledPin = 13;
 
 Servo eyepan;
@@ -26,7 +26,7 @@ void setup()
     nunchuck_setpowerpins();
     nunchuck_init(); // send the initilization handshake
     eyepan.attach(D6);
-    eyetilt.attach(D5);
+    eyetilt.attach(D4);
     jaw.attach(D3);
     Serial.print("WiiChuckDemo ready\n");
 }
@@ -44,8 +44,8 @@ void loop()
         accz  = nunchuck_accelz(); // ranges from approx 65 - 173
         zbut = nunchuck_zbutton();
         cbut = nunchuck_cbutton(); 
-        joyx = nunchuck_joyx();
-        joyy = nunchuck_joyy();
+        joyy = nunchuck_joyx()-40;
+        joyx = nunchuck_joyy()-20;
         if(joyx>160)
           joyx=160;
         if(joyy>160)
@@ -58,7 +58,7 @@ void loop()
           
         eyetilt.write(joyx);
         eyepan.write(joyy);  
-        jaw.write(zbut?160:20); 
+        jaw.write(zbut?70:20); 
         //Serial.print("accx: "); Serial.print((byte)accx,DEC);
         //Serial.print("\taccy: "); Serial.print((byte)accy,DEC);
         //Serial.print("\taccy: "); Serial.print((byte)accz,DEC);
