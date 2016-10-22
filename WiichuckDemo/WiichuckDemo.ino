@@ -44,8 +44,8 @@ void loop()
         accz  = nunchuck_accelz(); // ranges from approx 65 - 173
         zbut = nunchuck_zbutton();
         cbut = nunchuck_cbutton(); 
-        joyy = nunchuck_joyx()-40;
-        joyx = nunchuck_joyy()-20;
+        joyy = 255-nunchuck_joyx()-40;
+        joyx = 255-nunchuck_joyy()-20;
         if(joyx>160)
           joyx=160;
         if(joyy>160)
