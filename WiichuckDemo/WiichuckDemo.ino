@@ -31,7 +31,9 @@ void setup()
     Serial.print("WiiChuckDemo ready\n");
 }
 // 130 50
-
+int range= 40;
+int max = 127+range;
+int min =127-range;
 void loop()
 {
    
@@ -44,27 +46,28 @@ void loop()
         accz  = nunchuck_accelz(); // ranges from approx 65 - 173
         zbut = nunchuck_zbutton();
         cbut = nunchuck_cbutton(); 
-        joyy = 255-nunchuck_joyx()-40;
-        joyx = 255-nunchuck_joyy()-20;
-        if(joyx>160)
-          joyx=160;
-        if(joyy>160)
-          joyy=160;
+        joyy = 255-nunchuck_joyx();
+        joyx = 255-nunchuck_joyy();
+        
+        if(joyx>max)
+          joyx=max;
+        if(joyy>max)
+          joyy=max;
           
-        if(joyx<25)
-          joyx=24;
-        if(joyy<25)
-          joyy=24;  
+        if(joyx<min)
+          joyx=min;
+        if(joyy<min)
+          joyy=min;  
           
         eyetilt.write(joyx);
         eyepan.write(joyy);  
-        jaw.write(zbut?70:20); 
+        jaw.write(zbut?60:20); 
         Serial.print("\r\nFrame \n\tx= "); Serial.print(joyx);
         Serial.print("\r\n\t y : "); Serial.print(joyy);
-        Serial.print("\r\n\taccy: "); Serial.print(zbut);
+        //Serial.print("\r\n\taccy: "); Serial.print(zbut);
         //Serial.print("\tzbut: "); Serial.print((byte)zbut,DEC);
         //Serial.print("\tcbut: "); Serial.println((byte)cbut,DEC);
     }
     loop_cnt++;
-    delay(5);
+    delay(1);
 }
