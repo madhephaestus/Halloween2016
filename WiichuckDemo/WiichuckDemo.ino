@@ -20,7 +20,7 @@ Servo eyetilt;
 Servo jaw;
 void setup()
 {
-    Serial.begin(19200);
+    Serial.begin(9600);
 
 
     nunchuck_setpowerpins();
@@ -59,12 +59,12 @@ void loop()
         eyetilt.write(joyx);
         eyepan.write(joyy);  
         jaw.write(zbut?70:20); 
-        //Serial.print("accx: "); Serial.print((byte)accx,DEC);
-        //Serial.print("\taccy: "); Serial.print((byte)accy,DEC);
-        //Serial.print("\taccy: "); Serial.print((byte)accz,DEC);
+        Serial.print("\r\nFrame \n\tx= "); Serial.print(joyx);
+        Serial.print("\r\n\t y : "); Serial.print(joyy);
+        Serial.print("\r\n\taccy: "); Serial.print(zbut);
         //Serial.print("\tzbut: "); Serial.print((byte)zbut,DEC);
         //Serial.print("\tcbut: "); Serial.println((byte)cbut,DEC);
     }
     loop_cnt++;
-    delay(1);
+    delay(5);
 }

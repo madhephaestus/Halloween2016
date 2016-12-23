@@ -37,7 +37,7 @@ static void nunchuck_setpowerpins()
 // and tell the nunchuck we're talking to it
 static void nunchuck_init()
 { 
-    Wire.pins(D1,D2);
+    Wire.pins(D2,D1);
     Wire.begin();                // join i2c bus as master
     Wire.beginTransmission(0x52);// transmit to device 0x52
 #if (ARDUINO >= 100)
