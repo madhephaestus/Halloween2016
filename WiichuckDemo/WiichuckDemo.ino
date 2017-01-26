@@ -31,7 +31,7 @@ void setup()
     Serial.print("WiiChuckDemo ready\n");
 }
 // 130 50
-int range= 40;
+int range= 20;
 int max = 127+range;
 int min =127-range;
 void loop()
@@ -46,8 +46,8 @@ void loop()
         accz  = nunchuck_accelz(); // ranges from approx 65 - 173
         zbut = nunchuck_zbutton();
         cbut = nunchuck_cbutton(); 
-        joyy = 255-nunchuck_joyx();
-        joyx = 255-nunchuck_joyy();
+        joyy = 255-nunchuck_joyx()+8;
+        joyx = 255-nunchuck_joyy()-10;
         
         if(joyx>max)
           joyx=max;
